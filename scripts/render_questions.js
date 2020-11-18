@@ -34,14 +34,29 @@ let questionValues = [100, 200, 300, 400, 500];
  *      HINT: Use the + operator on a string and a variable to join them!
  *      Need more help? Check out https://bit.ly/2EIsD3b or ask a volunteer.
  */
+// function renderQuestions() {
+//   for (let i = 0; i < numCategories; i++) {
+//     // let htmlQuesString = "<div class='questions-column'>";
+//     for (let questionValue of questionValues) {
+//       let htmlQuestion = `<div class='questions-column'><div class='question-cell' data-category=${i}>${questionValue}</div></div>`
+//       $("#questions").append(htmlQuestion);
+//     }
+//   }
+// }
+
 function renderQuestions() {
   for (let i = 0; i < numCategories; i++) {
-    let htmlQuesString = "<div class='questions-column'>";
-    for (let x = 0; x < questionValues.length; x++) {
-      let ques = questionValues[x];
-      htmlQuesString += `<div class='question-cell' data-category=${x}>${ques}</div>`;
+    let questionHtml = "<div class='questions-column'>";
+    for (let questionValue of questionValues) {
+      questionHtml +=
+        "<div class='question-cell' data-category='" +
+        i +
+        "'>" +
+        questionValue +
+        "</div>";
     }
-    htmlQuesString += "</div>";
-    $("#questions").append(htmlQuesString);
+    questionHtml += "</div>";
+    $("#questions").append(questionHtml);
   }
 }
+

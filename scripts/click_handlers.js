@@ -38,9 +38,10 @@ function attachClickHandlers() {
   $(".question-cell").each((index, questionElement) => {
     // categoryIndex is used to look up the jeopardy question for this element.
     let categoryIndex = $(questionElement).attr("data-category");
-    let moneyValue = $(questionElement).text().replace("$", "");
+    let moneyValue = $(questionElement).text();
     $(questionElement).click(() => {
       // Add code here
+      questionOnClick(categoryIndex, moneyValue)
     });
   });
 }
@@ -61,13 +62,15 @@ function questionOnClick(categoryIndex, moneyValue) {
   $("#question-modal-show-answer")
     .click(() => {
       // Add code here
+      answerOnClick(categoryIndex, moneyValue)
       console.log("I just got clicked, I wish I could do more though!");
     })
     .show();
 
   $("#question-modal-close").click(() => {
     // Add code here
-    console.log("I just got clicked, I wish I could do more though!");
+    hideQuestionPopup()
+    // console.log("I just got clicked, I wish I could do more though!");
   });
   $("#question-modal").modal("show");
 }
