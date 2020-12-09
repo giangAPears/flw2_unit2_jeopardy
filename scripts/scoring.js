@@ -15,14 +15,23 @@
  *      Need more help? Check out https://api.jquery.com/ or ask a volunteer.
  */
 
+$("#scoring-actions").hide();
+
 function renderScoringButtons() {
   // Add code here
-  $("#score").show(); 
-  $("#correct-button").click(function() {
+  $("#score").show();
+
+  $("#correct-button").click(function () {
     addToScore();
   });
-  $("#incorrect-button").click(function() {
+
+  $("#incorrect-button").click(function () {
     subtractFromScore();
+  });
+
+  $("#question-modal-show-answer").click(function () {
+    $("#question-modal-actions").hide();
+    $("#scoring-actions").show();
   });
 }
 
@@ -46,8 +55,14 @@ function renderScoringButtons() {
  */
 function subtractFromScore() {
   // Add code here
+  let score = getCurrentScore();
+  score = score - currentQuestionValue;
+  $("#current-score").text(score);
 }
 
 function addToScore() {
   // Add code here
+  let score = getCurrentScore();
+  score = score + currentQuestionValue;
+  $("#current-score").text(score);
 }
